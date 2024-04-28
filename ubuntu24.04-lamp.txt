@@ -1,0 +1,86 @@
+sudo apt update
+sudo apt install apache2
+sudo apt install mysql-server
+=====
+Mysql Password setup
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+flush privileges;
+exit;
+==========  
+sudo add-apt-repository ppa:ondrej/php
+sudo apt update
+sudo apt install php8.3 -y
+sudo apt-get install -y php8.3-cli php8.3-common php8.3-mysql php8.3-zip php8.3-gd php8.3-mbstring php8.3-curl php8.3-xml php8.3-bcmath php8.3-redis php8.3-fpm php8.3-intl php8.3-zip php8.3-soap php8.3-opcache
+===
+phpmyadmin upload size incress conf
+
+sudo vi /etc/php/8.3/apache2/php.ini
+max_execution_time = -1
+max_input_time = -1
+memory_limit = -1
+post_max_size = 3000M
+upload_max_filesize = 2048M
+
+===
+sudo vi /etc/apache2/mods-enabled/dir.conf
+
+Replace index.php  , index.html
+
+==
+sudo systemctl restart php8.3-fpm.service
+sudo apt update && sudo apt install phpmyadmin php-mbstring
+sudo phpenmod mbstring
+sudo a2enmod rewrite 
+===
+conf
+sudo vi /etc/apache2/apache2.conf
+
+None -> All
+
+Composer install
+sudo apt-get install composer	
+
+cd ~
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+Node 
+
+
+sudo apt -y install curl
+curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+sudo apt install nodejs
+
+===
+yarn
+
+
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+
+npm 
+
+sudo apt install npm
+sudo npm install forever -g
+
+====
+PHP CHECK 
+
+<?php
+
+phpinfo( );
+
+?>
+===
+
+== PHP Version Switch Commands line ===
+
+sudo update-alternatives --config php
+
+
+
+
+
+
